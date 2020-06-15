@@ -1,0 +1,57 @@
+%Input parameters of natural convection in enclosure
+
+%physical domain
+&Rectangle
+	LenX=1.0
+	LenY=1.0
+/
+
+% the pulsating temperature at letf sidewall
+&Pulsating_Temperature
+	Amplitude=0
+	Period=10
+/
+
+% mathematic model
+&Physical_Property
+	Re=0
+	Ra=1.0000030e+05
+	Pr=7.0480469e-01
+	BetaP=1.0
+	Theta=7.7226562e+01
+/
+
+% grid
+&Grid_Fine
+	Nx=48
+	Ny=48
+/
+
+
+%Third order backward difference scheme with pseudo time integrator
+&PTMU_Paras
+	CFL=1.0
+	EPS=-8
+/
+
+%unsteady parameters
+&Unsteady_parameters
+	DT=0.1
+	NT=1
+/
+
+
+% time parallel parameters
+% npt is the size of one pesudo time marching unit
+&Time_Parallel
+	Npt=100000
+/
+
+
+
+% output control
+&Output_Control
+	IterPrint=5000
+	PathOutput="OUTPUT"
+	WriteResult=.True.
+/

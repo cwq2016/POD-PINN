@@ -1,0 +1,5 @@
+# flow field file
+*POD/
+*Validation/
+others/
+*.tar.gz
