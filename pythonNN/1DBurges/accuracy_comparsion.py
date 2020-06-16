@@ -103,20 +103,20 @@ def VisuError(Error, testcases, Savetofile=False):
     #plt.close('all')i
     newfig(width=1.3)
     for i in range(len(Vals)):
-        namestr = ', ' + '$Ns$=' + str(Vals[i])
+        namestr = ', ' + '$N_s$=' + str(Vals[i])
         if name != 'SampleNum' and i ==0:
-            plt.semilogy(M_Vec,Error[i,:,4], 'k-.',label='Projections'  )
+            plt.semilogy(M_Vec,Error[i,:,4], 'k-.',label='Projection'  )
             plt.semilogy(M_Vec,Error[i,:,0], 'r-.',label='POD-G      '  )
         elif name == 'SampleNum':
-            plt.semilogy(M_Vec,Error[i,:,4], 'k-.'+symbols[i] ,label='Projections'+namestr  )
+            plt.semilogy(M_Vec,Error[i,:,4], 'k-.'+symbols[i] ,label='Projection'+namestr  )
             plt.semilogy(M_Vec,Error[i,:,0], 'r-.'+symbols[i] ,label='POD-G'   +namestr  )
         if not( name == 'NResi' ):
-            plt.semilogy(M_Vec,Error[i,:,1], 'y:'+symbols[i]  ,label='POD-NN'  +namestr  )
-        plt.semilogy(M_Vec,Error[i,:,2], 'g--'+symbols[i]     ,label='POD-PINN1'+namestr  )
-        plt.semilogy(M_Vec,Error[i,:,3], 'g-'+symbols[i]      ,label='POD-PINN2'+namestr  )
+            plt.semilogy(M_Vec,Error[i,:,1], 'y:'+symbols[i]  ,label='PDNN'  +namestr  )
+        plt.semilogy(M_Vec,Error[i,:,2], 'g--'+symbols[i]     ,label='PINN'+namestr  )
+        plt.semilogy(M_Vec,Error[i,:,3], 'g-'+symbols[i]      ,label='PRNN'+namestr  )
 
-    plt.xlabel('$M$')
-    plt.ylabel('Error')
+    plt.xlabel('$m$')
+    plt.ylabel(r'Error $\varepsilon$')
     plt.title(name)
     plt.legend(loc="lower left", ncol=1, handlelength=3)
     plt.show()
