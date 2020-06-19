@@ -117,7 +117,7 @@ def VisuError(Error, testcases, Savetofile=False):
 
     plt.xlabel('$m$')
     plt.ylabel(r'Error $\varepsilon$')
-    plt.title(name)
+    #plt.title(name)
     plt.legend(loc="lower left", ncol=1, handlelength=3)
     plt.show()
     
