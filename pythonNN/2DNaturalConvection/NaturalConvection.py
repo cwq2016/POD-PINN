@@ -396,14 +396,17 @@ if __name__ == '__main__':
     matfilePOD = NumSolsdir  + '/'+'NaturalConvectionPOD.mat'
     matfileValidation = NumSolsdir  + '/'+'NaturalConvectionValidation.mat'
     M = 10
-    roeqs = CustomedEqs(matfilePOD, 100, matfileValidation, M)
+    Nsample = 200
+    roeqs = CustomedEqs(matfilePOD, Nsample, matfileValidation, M)
+    
+    from plotting import newfig,savefig    
     import matplotlib.pyplot as plt
-    plt.figure(figsize=(6,6))
-    plt.semilogy(np.arange(roeqs.sigma.shape[0])+1, roeqs.sigma )
-    plt.xlabel('$M$')
+    newfig(width=1)
+    plt.semilogy(np.arange(0,roeqs.sigma.shape[0],2)+1, roeqs.sigma[::2],'-ko')
+    plt.xlabel('$m$')
     plt.ylabel('Singular value')    
     plt.show()
-    plt.savefig('fig/'+root+'.png')
+    savefig('fig/SingularValues_%d'%(Nsample) )
 #    
 #    alpha = roeqs.ValidationParameters
 #    lamda = roeqs.POD_Gfsolve(alpha, roeqs.lamda_proj)

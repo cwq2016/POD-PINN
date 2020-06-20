@@ -8,11 +8,11 @@
 \BOOKMARK [1][-]{section.3}{Physics-informed machine learning of reduced-order model}{}% 8
 \BOOKMARK [2][-]{subsection.3.1}{Artificial neural network \(ANN\) }{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.2}{Training the networks}{section.3}% 10
-\BOOKMARK [3][-]{subsubsection.3.2.1}{PDNN:POD-based projection-driven neural network}{subsection.3.2}% 11
-\BOOKMARK [3][-]{subsubsection.3.2.2}{PINN: POD-based physics-driven neural network}{subsection.3.2}% 12
-\BOOKMARK [3][-]{subsubsection.3.2.3}{PRNN: POD-based physics-reinforced neural network with labeled data}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Projection-driven neural network\(PDNN\)}{subsection.3.2}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.2}{physics-informed neural network\(PINN\)}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.3}{physics-reinforced neural network\(PRNN\)}{subsection.3.2}% 13
 \BOOKMARK [1][-]{section.4}{Numerical results}{}% 14
 \BOOKMARK [2][-]{subsection.4.1}{Burgers' equation}{section.4}% 15
 \BOOKMARK [2][-]{subsection.4.2}{Lid-driven cavity}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.3}{Rayleigh-B\351nard convection}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Natural convection in enclosure}{section.4}% 17
 \BOOKMARK [1][-]{section.5}{Conclusions}{}% 18

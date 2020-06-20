@@ -55,6 +55,8 @@ pmin, pmax =  Fields_Num[0::6,:].min(), Fields_Num[0::6,:].max()
 def contourplot(ax, x,y, phi1, vmin, vmax, phi2, levels,title):
     sc1=ax.contourf(x,y,phi1, vmin=vmin, vmax=vmax,cmap='jet')
     sc2=ax.contour( x,y,phi2, levels=levels, colors=['k'])
+    xmid = x.min()+x.max(); dx=1.5-(x.max()-x.min())
+    ax.axis([xmid-0.75,xmid+0.75,-0.75,0.75])
     ax.set_title(title)
     ax.axis('off')
     return sc1,sc2
@@ -78,7 +80,7 @@ for i in range(len(ValidationInd )):
     psilevels = np.concatenate((np.linspace(psi_min, 0, 10),np.linspace(0,psi_max, 3)[1:], ))
     
     title = '$\\boldsymbol{\\mu}=(%3d,%3d)$'%(alphai[0,0], alphai[0,1])
-    sc1,sc2 = contourplot(plt.subplot(gs[0, i]), x, y, p,   pmin, pmax,  psi   , psilevels,title+', POD-PINN2')
+    sc1,sc2 = contourplot(plt.subplot(gs[0, i]), x, y, p,   pmin, pmax,  psi   , psilevels,title+', PRNN')
     sc1,sc2 = contourplot(plt.subplot(gs[1, i]), x, y, pNum,pmin, pmax,  psiNum, psilevels,title+', PS')
     
 #colorbar 左 下 宽 高 
