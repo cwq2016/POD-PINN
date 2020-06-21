@@ -607,13 +607,13 @@ For each parameter, the solution at the two end points are simply set zero to av
 
 
 We are are interested in the prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods. The accuracy of Projection and POD-G is only determined by two factors, namely the sample size $N_s$ for building RB and and the number of chosen modes $m$, provided that the nonlinear solver for POD-G is accurate enough. Here we term the two factors as essential factors.
-Besides the two factors, neural network like PDNN, PINN and PRNN are also determined by network architecture, the number of residual points, and so on. To study the influence of these factors, we resort to the control variates method. Some base values are set for these factor, namely sample size is $N_s=80$, the number of chosen modes is picked from the set $\{2,3,...,9\}$,  network architecture is $L=3$ and $n_H=20$, the number of residual points is $N_{Resi}=5000$. To test the prediction accuracy, a test data set of size $101 \times 101=10201$ is generated on a tensor-product parameter grid $\{1+ 0.09i\}_{i=0}^{i=100} \times \{1+ 0.09i\}_{i=0}^{i=100}$. The dense test grid will grantee the reliability of the prediction accuracy.
+Besides the two factors, neural network like PDNN, PINN and PRNN are also determined by network architecture, the number of residual points, and so on. To study the influence of these factors, we resort to the control variates method. Some base values are set for these factor, namely sample size is $N_s=80$, the number of chosen modes is picked from the set $\{2,3,...,9\}$,  network architecture is $L=3$ and $n_H=20$, the number of residual points is $N_{Resi}=5000$. To test the prediction accuracy, a test data set of size $101 \times 101=10201$ is generated on a tensor-product parameter grid $\{1+ 0.09i\}_{i=0}^{i=100} \times \{1+ 0.09i\}_{i=0}^{i=100}$. The dense test grid will grantee the reliability of the prediction accuracy. 
 
 We first study the influence of the sample size. Fig. \ref{fig_1DBurgesSingularValues_80}, presents the singular value distribution for the sample number $N_s=80$. It is shown that the singular value decays quickly, implying that  a small number of RB modes is enough for representing the dynamic of the problem. Meanwhile, the sample number can also be largely reduced. Thus, for comparison, $N_{s}=10$ and 320 random parameter samples are independently generated with Sobol sequences. The five methods are applied to the problem after the RB are built for $N_{s}=10$, 80 and 320, respectively. The prediction accuracy is shown in Fig. \ref{fig_1DBurgesErrorComparsion_SampleNum}. It is shown that the Projection enjoys a better accuracy compared with the POD-G, but their discrepancy is very small. The pojection/POD-G improves just a little for sample number $N_s$ increasing from 10 to 80, and almost stagnates from $N_s=80$ to 320. Thus, sample number $N_s=10$ is enough for capture the main dynamic of the problem. The networks perform quite differently. The accuracy of PDNN is far lower than that of PINN and PRNN. Even with the increase of sample number, the accuracy of PDNN can improve by one order of magnitude, but the error curves fluctuate intensively especially for larger $m$. On the contrary, both PINN and PRNN perform much better, they almost keep pace with POD-G for smaller $m$. As $m \ge 6$, the PINN performs a little better than the PRNN, but their error level both come to a saturation and cannot further drop down. The reason for the saturation is that both the PINN and PRNN can only reduce their loss function down to a level of $10^{-6}$ for this problem rather than zero or machine zero level. Thus the high-index modes of little importance are neglected by the networks.  The PINN performs a little better than the PRNN, which is opponent with our inference in Section \ref{PRNN}. The reason is two-fold: first, the problem and the target function is relatively easy for networks; second, the accuracy of POD-G is very close to projection. Therefore, There is no priority for the PRNN, as its loss function is a hybrid.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
+  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
 \caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
 \label{fig_1DBurgesSingularValues_80}
 \end{figure}
@@ -621,35 +621,35 @@ We first study the influence of the sample size. Fig. \ref{fig_1DBurgesSingularV
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf}
-\caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods for the number of snapshots $N_s=10$, 80 and 320, respectively.}
+\caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods for the number of snapshots $N_s$=10, 80 and 320, respectively.}
 \label{fig_1DBurgesErrorComparsion_SampleNum}
 \end{figure}
 
 
 To further study the influence of network architecture on the prediction accuracy of the three networks, we change network width to $n_H=10$ and $n_H=30$,respectively, while keeping network depth $L=3$ fixed. The results are shown in Fig. \ref{fig_1DBurgesErrorComparsion_Netsize}. It is shown that the PDNN can not gain an improvement of accuracy with the increase of $n_H$, or even get rid of the fluctuation, resulting from the overfitting trap. On the contrary, the PINN and PRNN show a much better tendency. Their prediction accuracy increases with $n_H$ but tends to saturate for a larger $n_H$. This is in accordance with the situation that the approximation capability of the network increases and gradually saturate with network size.
 
-As there are unlimited residual points available  for training PINN and PRNN, we are interested in how the number of residual points influence the prediction accuracy. In addition to $N_{Resi}=5000$, the numbers of residual points $N_{Resi}=1250$, $2500$ and $10000$ are considered, and their results are shown in Fig. \ref{fig_1DBurgesErrorComparsion_NResi}. The influence of the numbers of residual points is similar with that of network architecture.
+As there are unlimited residual points available for training both the PINN and PRNN, we are interested in how the number of residual points influence the prediction accuracy. In addition to $N_{Resi}=5000$, the numbers of residual points $N_{Resi}=1250$, $2500$ and $10000$ are considered, and the results are shown in Fig. \ref{fig_1DBurgesErrorComparsion_NResi}. The influence of the number of residual points is similar with that of network architecture. That is to say, the prediction accuracy increases with the number of residual points $N_{Resi}$, but it will reach a saturation after some critical $N_{Resi}$.
 
-The further confirmation of the reliability of PRNN is shown in Fig. \ref{fig_1DBurgesResultComparsion}, offering a good agreement between the Chebyshev pseudospectral method and PRNN for some specific parameters.
+Besides, the further confirmation of the reliability of PRNN is shown in Fig. \ref{fig_1DBurgesResultComparsion}, offering a good agreement between the Chebyshev pseudospectral method and PRNN for some specific parameters.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf}
+  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf}
 \caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods. The network width is set $n_H=10$, 20 and 30, respectively.}
 \label{fig_1DBurgesErrorComparsion_Netsize}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf}
-\caption{The prediction accuracy of the Projection, POD-G, PINN and PRNN methods. $N_{Resi}=1250$, 2500, 5000, 10000 residual points are chosen for training the PINN and PRNN.}
+  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf}
+\caption{The prediction accuracy of the Projection, POD-G, PINN and PRNN methods. $N_{Resi}$=1250, 2500, 5000, 10000 residual points are chosen for training the PINN and PRNN.}
 \label{fig_1DBurgesErrorComparsion_NResi}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ResultComparsion.pdf}
-\caption{The comparison between the Chebyshev pseudospectral (PS) and the PRNN solutions for four specific parameters. The results of the PRNN are obtained via employing the $m=9$ modes extracted from 10 snapshot and a network of $L=3$ and $n_H=20$ architecture trained with 5000 residual points.}
+  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/ResultComparsion.pdf}
+\caption{The comparison between the Chebyshev pseudospectral (PS) and the PRNN solutions for four specific parameters. The results of the PRNN are obtained via employing the $m$=9 modes extracted from 10 snapshot and a network of $L$=3 and $n_H$=20 architecture trained with 5000 residual points.}
 \label{fig_1DBurgesResultComparsion}
 \end{figure}
 
@@ -667,7 +667,7 @@ The flow is governed by the following non-dimensional incompressible Navier-Stok
 ,
 \label{eq_GoverningEqsLidDriven}
 \end{equation}
-where $\mathbf{u}=(u,v)$ is the dimensionless velocity in Cartesian coordinate $\mathbf{x}=(x,y)$, $p$ is the pressure, $\nabla$ is the  Hamiltonian operator, $Re$ is the Reynolds number.  The geometry of the problem is illustrated in Fig. ??, which is affected by  the inclining angle $\theta$ of the left and right side walls. The Reynolds number and the inclining angle are the parameter $\pmb {\mu} $ controlling the problem. In order to address the variable geometry, the physical domain  is mapped to an square domain, as shown in Fig. ??. The mapping $\mathcal{X}$ from the physical domain $\mathbf{x} \in \Omega\left(\pmb{\mu}\right)$ to the computation domain $\pmb{ \xi}=(\xi_1, \xi_2) \in [-1,1]^2$  and its inverse $\mathcal{X}^{-1}$ are defined as follows:
+where $\mathbf{u}=(u,v)$ is the dimensionless velocity in Cartesian coordinate $\mathbf{x}=(x,y)$, $p$ is the pressure, $\nabla$ is the  Hamiltonian operator, $Re$ is the Reynolds number.  The geometry of the problem is illustrated in Fig. \ref{fig_geometry}, which is affected by  the inclining angle $\theta$ of the left and right side walls. The Reynolds number and the inclining angle are the parameter $\pmb {\mu} $ controlling the problem. In order to address the variable geometry, the physical domain  is mapped to an square domain, as shown in Fig. ??. The mapping $\mathcal{X}$ from the physical domain $\mathbf{x} \in \Omega\left(\pmb{\mu}\right)$ to the computation domain $\pmb{ \xi}=(\xi_1, \xi_2) \in [-1,1]^2$  and its inverse $\mathcal{X}^{-1}$ are defined as follows:
 \begin{equation}
 \mathcal{X}:
 \left \{
@@ -709,18 +709,54 @@ Substituting Eq. \ref{eq_JacLidDriven} into Eq. \ref {eq_GoverningEqsLidDriven},
 \label{eq_GoverningEqsCompLidDriven}
 \end{equation}
 
-The flow is driven by the top moving wall. All the other three sides are all no-slip walls. The flow is solved by the Chebyshev pseudospectral method. To solve the flow, the Chebyshev pseudospectral method is employed with a grid of $49 \times 49$.
-For this problem, it is crucial to address the well-known difficulty the corner singularity, resulting from the discontinuous horizontal velocity at the two top corners. To remove the singularity, the velocity of top wall is specified as
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=10cm]{..//fig/geometry.pdf}
+    \caption{The geometry and boundary conditions for (a) Lid-Driven flow and (b) Natural convection in enclosure.}
+    \label{fig_geometry}
+\end{figure}
+
+
+The flow is driven by the top moving wall. All the other three sides are all no-slip walls. The flow is discritized by the Chebyshev pseudospectral method with a tensor-product grid of $49 \times 49$.
+For this problem, it is crucial to address the well-known difficulty the corner singularity, resulting from the discontinuous horizontal velocity at the two top corners. In this work, to remove the singularity, the velocity of top wall is specified as
 \begin{equation}
 u_W = (1+\xi_1)^2(1-\xi_1)^2
 \end{equation}
 as adopted in references ??.
-Artificial compressibility method is employed to address the coupling velocity field and pressure by  transforming steady  Eq. (\ref{eq_GoverningEqsCompLidDriven}) into an unsteady one in pseudo time . The derived discrete equation is then solved using an explicit fourth-order four-stage Runge-Kutta integrator in pseudo time.
+Besides, the artificial compressibility method is employed to address the coupling velocity field and pressure by  transforming steady  Eq. (\ref{eq_GoverningEqsCompLidDriven}) into an unsteady one in pseudo time . The derived discrete equation is then solved using an explicit fourth-order four-stage Runge-Kutta integrator in pseudo time.
 
-The parameter space of interest is $\pmb{\mu}=(Re, \theta) \in [100,500] \times [\pi/3, 2\pi/3]$. 100 snapshots of high-fidelity solutions for parameters generated Sobol sequence are calculated and collected for building the reduced basis, and the corresponding singular value distribution is plotted in Fig. ??. It is shown that the singular value decays slowly, implying that more modes are required to represent the underlying dynamic. We set $m=5, 10, 15,...,30$ to test the prediction accuracy of PDNN, PINN and PRNN.
-To test the prediction accuracy, a test data set of size $11 \times 11=121$ is generated on a tensor-product parameter grid $\pmb{\mu}=\{100+ 40i\}_{i=0}^{i=10} \times \{\pi/3+ i\pi/15\}_{i=0}^{i=10}$.
+The parameter space of interest is $\pmb{\mu}=(Re, \theta) \in [100,500] \times [\pi/3, 2\pi/3]$. 100 snapshots of high-fidelity solutions for parameters generated with Sobol sequence are calculated and collected for building the reduced basis, and the corresponding singular value distribution is plotted in Fig. \ref{fig_2DLidDrivenSingularValues}. It is shown that the singular value decays slowly, implying that more modes are required to represent the underlying dynamic. We choose the first $m=5, 10, 15,...,30$ reduced modes to test the prediction accuracy of PDNN, PINN and PRNN.
+The prediction accuracy is assessed on a test data set of size $11 \times 11=121$, generated on a tensor-product parameter grid $\pmb{\mu}=\{100+ 40i\}_{i=0}^{i=10} \times \{\pi/3+ i\pi/15\}_{i=0}^{i=10}$.
 For comparison, we pick the first 30, 60 snapshots from the 100 snapshots to do the same test.
-The prediction accuracy is shown in Fig. ??. It is shown that both PINN and PRNN are much better than
+The prediction accuracy is shown in Fig. \ref{fig_2DLidDrivenErrorComparsion_SampleNum}. It is shown that both PINN and PRNN are much better than
+
+Besides, the further confirmation of the reliability of PRNN is shown in Fig. \ref{fig_2DLidDrivenResultComparsion}, offering a good agreement between the Chebyshev pseudospectral method and PRNN for some specific parameters.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=9cm]{../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf}
+\caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
+\label{fig_2DLidDrivenSingularValues}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf}
+\caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods for the number of snapshots $N_s$=10, 80 and 320, respectively.}
+\label{fig_2DLidDrivenErrorComparsion_SampleNum}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=9cm]{../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf}
+\caption{The comparison between the Chebyshev pseudospectral (PS) and the PRNN solutions for four specific parameters. The results of the PRNN are obtained via employing the $m$=9 modes extracted from 10 snapshot and a network of $L$=3 and $n_H$=20 architecture trained with 5000 residual points.}
+\label{fig_2DLidDrivenResultComparsion}
+\end{figure}
+
+
+
+
 
 \subsection{Natural convection in enclosure}
 To further test the prediction accuracy of the networks for more complex problems, natural convection in enclosure problem is considered. The geometry and boundary is shown in Fig. ??. The square cavity of unit size is filled with incompressible Newtonian fluid. The cavity is heated and cooled differentially on the two opponent sides, with the other two sides insulated. The gravity acts in the vertical direction. The flow is driven by the vertical buoyancy force, which is modeled according to Boussinesq approximation. The cavity is deployed with a rotation angle $\theta$. To address the variable geometry, a variable coordinate system is applied with $x$-axis perpendicular to the heated/cooled sides.
