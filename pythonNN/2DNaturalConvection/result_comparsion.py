@@ -82,7 +82,7 @@ for i in range(len(ValidationInd )):
     psilevels = np.concatenate((np.linspace(psi_min, 0, 10),np.linspace(0,psi_max, 3)[1:], ))
     
     title = '$\\boldsymbol{\\mu}=(%0.0E,%0.2f,%d)$'%(alphai[0,0], alphai[0,1],alphai[0,2])
-    sc1,sc2 = contourplot(plt.subplot(gs[0, i]), x, y, T,   Tmin, Tmax,  psi   , psilevels,title+', POD-PINN2')
+    sc1,sc2 = contourplot(plt.subplot(gs[0, i]), x, y, T,   Tmin, Tmax,  psi   , psilevels,title+', PRNN')
     sc1,sc2 = contourplot(plt.subplot(gs[1, i]), x, y, TNum,Tmin, Tmax,  psiNum, psilevels,title+', PS')
     
 #colorbar 左 下 宽 高 

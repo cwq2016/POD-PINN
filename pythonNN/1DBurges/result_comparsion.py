@@ -53,11 +53,11 @@ for k in range(2):
         if k == 0:
             plt.plot(roeqs.xgrid, phi_Exact.T, colors[i]+lines[0]  ,label='Exact'           ,markersize=6  )
         else:
-            plt.plot(roeqs.xgrid, phi_proj.T , colors[i]+symbols[i],label='POD-PINN2, '+name,markersize=6  )
+            plt.plot(roeqs.xgrid, phi_proj.T , colors[i]+symbols[i],label='PRNN, '+name,markersize=6  )
 
 plt.xlabel('$x$')
 plt.ylabel('$\phi$')
-plt.title(resultsdir)
+#plt.title(resultsdir)
 plt.legend(loc="upper left", ncol=2, handlelength=2, columnspacing=1)
 plt.show()
 savefig('fig/ResultComparsion')

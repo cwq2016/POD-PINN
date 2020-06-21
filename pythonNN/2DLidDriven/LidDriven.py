@@ -402,16 +402,16 @@ if __name__ == '__main__':
     roeqs = CustomedEqs(matfilePOD, Nsample, matfileValidation, M)
 
 
-#    from plotting import newfig,savefig
-#    import matplotlib.pyplot as plt    
-#    newfig(width=1)
-#    plt.semilogy(np.arange(roeqs.sigma.shape[0])+1, roeqs.sigma,'-ko')
-#    plt.xlabel('$M$')
-#    plt.ylabel('Singular value')    
-#    plt.show()
-#    savefig('fig/SingularValues_%d'%(Nsample) )
-#    plt.savefig('fig/SingularValues_%d_%dand%d_%d.png'%(roeqs.design_space[0,0],roeqs.design_space[1,0], \
-#                                                        roeqs.design_space[0,1],roeqs.design_space[1,1]) )
+    from plotting import newfig,savefig
+    import matplotlib.pyplot as plt    
+    newfig(width=1)
+    plt.semilogy(np.arange(roeqs.sigma.shape[0])+1, roeqs.sigma,'-ko')
+    plt.xlabel('$m$')
+    plt.ylabel('Singular value')    
+    plt.show()
+    savefig('fig/SingularValues_%d'%(Nsample) )
+    plt.savefig('fig/SingularValues_%d_%dand%d_%d.png'%(roeqs.design_space[0,0],roeqs.design_space[1,0], \
+                                                        roeqs.design_space[0,1],roeqs.design_space[1,1]) )
 ##    
 #    
     
