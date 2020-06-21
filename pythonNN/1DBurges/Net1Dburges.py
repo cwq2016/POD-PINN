@@ -218,7 +218,7 @@ class CustomedNet(POD_Net):
         
 if __name__ == '__main__':
     NumSolsdir = 'NumSols'
-    Nsample = 320
+    Nsample = 80
     matfile = NumSolsdir  + '/'+'Burges1D_SampleNum='+str(Nsample)+'.mat'
     M = 2
     roeqs = CustomedEqs(matfile, M)
@@ -230,7 +230,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt    
     newfig(width=1)
     plt.semilogy(np.arange(roeqs.sigma.shape[0])+1, roeqs.sigma,'-ko')
-    plt.xlabel('$M$')
+    plt.xlabel('$m$')
     plt.ylabel('Singular value')    
     plt.show()
     savefig('fig/SingularValues_%d'%(Nsample) )
