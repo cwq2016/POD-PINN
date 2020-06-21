@@ -419,14 +419,26 @@ where $\mathbf{E}_k \in \mathbf{R}^{m}$ is $k$th column of the unit matrix $\mat
 where $\mathbf{V}_i$, $\mathbf{V}_j$ and $\mathbf{V}_k$ are the $i$th, $j$th and $k$th columns of $\mathbf{V}$, respectively.
 
 \section{Physics-informed machine learning of reduced-order model}
-This section presents several methods aiming to find the mapping from parameter space to high-fidelity solution. Based on the reduced basis, we jsut need to find the mapping from parameter space to reduced basis coefficient, namely the projection of high-fidelity solution onto reduced basis.
-These methods are classified into intrusive and non-intrusive methods. We term it as a non-intrusive method if the reduced-order model won't need to be built, otherwise it is an intrusive method. As for non-intrusive methods in reference ??, the underlying idea is an interpolation, such as cubic spline method based on a tensor-product grid in parameter space and building an artificial neural network (ANN) with a labeled data. These non-intrusive methods can achieve a good approximation and very little online cost, but the drawback is their highly relying on the size of labeled data, namely the number of evaluations of full-order model. According to Jan, artificial neural network has a good reduction in the eagerness of more labeled data compared with the cubic spline method. Even so, the required size of labeled data is prohibitively larger than the size of snapshots for building a satisfactory reduced basis. A good alternate is the intrusive method, where the reduced-order model is solved with a suitable nonlinear solver, such as Newton-like method. However, it is also a tough work to find the right solution especially for a larger $m$. To this end, we combine ANN and the reduced-order model together together.
+This section presents several methods aiming to find the mapping from parameter space to high-fidelity solution. Based on the reduced basis, we just need to find the mapping from parameter space to reduced basis coefficient, namely the projection of high-fidelity solution onto reduced basis.
+These methods are classified into intrusive and non-intrusive methods. We term it as a non-intrusive method if the reduced-order model won't need to be built, otherwise it is an intrusive method.
+As for non-intrusive methods in reference ??, the underlying idea is an interpolation, such as the projection-driven neural network(PDNN) proposed by Jan ?? and the traditional cubic spline method. These non-intrusive methods can achieve a good approximation with very little online cost, but the drawback is their highly relying on the size of labeled data set, namely the number of evaluations of full-order model.
+For example, the traditional cubic spline method requires high-fidelity solutions with a tensor-product grid in parameter space, and the POD-NN are trained with a labeled data set.
+According to Jan, the PDNN has a good reduction in the eagerness of more labeled data compared with the cubic spline method.
+Even so, the required size of labeled data for the PDNN is prohibitively larger than the size of snapshots for building a satisfactory reduced basis.
 
-In the next subsections, we first briefly introduce the basis idea of artificial neural networks. Then we will start from the projection-driven neural networks proposed by Jan ??. After that two methods, namely the physics-inform neural network and physics-reinforced neural network are proposed, pursue a higher prediction accuracy with fewer snapshots.
+A good alternate is the intrusive method, feathering a much cheaper computational cost of the reduced-order model. One can directly solve the reduced-order model with a suitable nonlinear solver, such as Newton-like method. However, it is also a tough work to find the right solution especially for a larger number of reduced-order model, as a reasonable initial solution is not always available. To this end, we combine artificial network (ANN) and the reduced-order model together together, benefiting from the cheap cost of reduced-order mode and powerful approximating capability of ANN. We first propose to solve the reduced-order model with ANN, referred to physics-informed network (PINN). Then we try to add more prior knowledge into reinforce the PINN, referred to physics-reinforced neural network (PDNN). For the sake of clarity, the relationships of these methods are illustrated in Fig. \ref{fig_relationship}.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../fig/RelationshipChart.pdf}
+\caption{Relationship among methods}
+\label{fig_relationship}
+\end{figure}
+
+In the next subsections, we first briefly introduce the basic idea of artificial neural networks. Then we will start from the projection-driven neural networks proposed by Jan ??. After that, the proposed physics-inform neural network and physics-reinforced neural network will be detailed.
 
 
 \subsection{Artificial neural network (ANN) }
-For an arbitrary target function, ANN is a powerful nonlinear approximators constituted of a linear combination of some nonlinear functions. Generally, ANN contains $L$ hidden layers besides input and output layers,  the $i$th layer equipped with $n_l$ neurons, where $l=0,1,..L,L+1$ denotes the input layer, 1st hidden layer,..., $L$th hidden layer and the output layer, respectively. ANN is a nonlinear function $\mathcal{O}: \mathbf{R}^{n_0} \mapsto \mathbf{R}^{n_{L+1}}$ of inputs $\mathbf{x}$, comprising a  recursion
+For an arbitrary target function, ANN is a powerful nonlinear approximator constituted of a linear combination of some nonlinear functions. Generally, ANN contains $L$ hidden layers besides input and output layers,  the $i$th layer equipped with $n_l$ neurons, where $l=0,1,..L,L+1$ denotes the input layer, 1st hidden layer,..., $L$th hidden layer and the output layer, respectively. ANN is a nonlinear function $\mathcal{O}: \mathbf{R}^{n_0} \mapsto \mathbf{R}^{n_{L+1}}$ of inputs $\mathbf{x}$, comprising a  recursion
 \begin{equation}
 \left \{
 \begin{aligned}
@@ -447,10 +459,10 @@ loss\left( {\mathcal{O}\left(\mathbf{x}\right),\mathcal{O}_\text{target} \left(\
 \end{equation}
 However, optimizing the minimization problem is not trivial. As for approximating a complex nonlinear target function with high dimensional inputs/outputs, an ANN of large depth and width is always necessary, resulting in a much larger size of independent variables in $\mathbf{W,b}$, where $\bf{W}=\{W_i\}_{i=1}^{L+1}$ and $\bf{b}=\{b_i\}_{i=1}^{L+1}$. Thus many numerical issues will emerge, among which local minima and overfitting traps are the most common cases. Luckily, many training techniques have been developed in last decades, such as Mini-Batch method to relive local minima trap and regulation method to relieve overfitting trap.
 
-\subsection{Training the networks}
+\subsection{Customized networks}
 %To get a good mapping form parameter $\pmb{\mu} \in \mathcal{P}$ to the projection of snapshot $\pmb{\phi}_h \in \mathbf{R}^{N}$ in reduced sapce, a ANN is built and trained based on reduced basis.
 
-Some preparation need to be made before training the networks. Recall that the snapshot set $\pmb {\Phi}_{\mathcal{P}_M}=\{\pmb{\phi}_h(\pmb{\mu}_1), \pmb{\phi}_h(\pmb{\mu}_2),...,\pmb{\phi}_h(\pmb{\mu}_M)\}  \in \mathbf{R}^{N \times M}$ corresponding with the parameter set $\mathcal{P}_M=\{\pmb{\mu}_1, \pmb{\mu}_2,...,\pmb{\mu}_M\} \subset \mathcal{P}$ is employed to extract the reduced basis $\mathbf{V}$ , according to Section \ref{sec_ROM}. Due to the orthogonality of $\mathbf{V}$, the projection coefficient of each snapshot on the reduced space is derived by left multiplying Eq. (\ref{eq_projection}) with $\mathbf{V}^T$
+Some preparation need to be made before introducing the networks. Recall that the snapshot set $\pmb {\Phi}_{\mathcal{P}_M}=\{\pmb{\phi}_h(\pmb{\mu}_1), \pmb{\phi}_h(\pmb{\mu}_2),...,\pmb{\phi}_h(\pmb{\mu}_M)\}  \in \mathbf{R}^{N \times M}$ corresponding with the parameter set $\mathcal{P}_M=\{\pmb{\mu}_1, \pmb{\mu}_2,...,\pmb{\mu}_M\} \subset \mathcal{P}$ is employed to extract the reduced basis $\mathbf{V}$ , according to Section \ref{sec_ROM}. Due to the orthogonality of $\mathbf{V}$, the projection coefficient of each snapshot on the reduced space is derived by left multiplying Eq. (\ref{eq_projection}) with $\mathbf{V}^T$
 \begin{equation}
 \begin{aligned}
 \pmb{\alpha}  &   =    \mathbf{V}^T (\pmb{\phi}_h -\tilde{\phi} - \pmb{\epsilon}) \\
@@ -540,12 +552,13 @@ w \times \left. {{loss}_{\rm{PINN}}} \right|_{{\cal D} = {\cal D}_{Resi }}
 where $w$ is a specific weight balancing projection and reduced-order model. In this work, we find that simply setting $w=1$ will produces a good result.  When training the network, the two data sets are treated separately. As for projection data set ${\cal D}_{Pr}$, it is more accurate but its size is very small, so we continue to use full batch. As for residual data set ${\cal D}_{Pr}$, it is less accurate but its size is very large, and we use mini-batch method for each updating of the network.
 
 \section{Numerical results}
-In this section, the following notations will be used repeatedly in the text and plots to distinguish results of different methods:
-we will discuss the application of PDNN, PINN and PRNN methods to three parameterized PDEs, namely the one-dimensional Burges' equation, two-dimensional lid driven flow and two-dimensional natural convection flow. For comparison of accuracy, the results of two analytical methods are also considered:
+In this section,
+we will discuss the application of PDNN, PINN and PRNN methods to the parameterized PDEs, namely the one-dimensional Burges' equation, two-dimensional lid driven flow and two-dimensional natural convection flow. For comparison of accuracy, the results of two analytical methods are also considered:
 \begin{enumerate}[(1)]
 \item \textbf{Projection}: Projection of high-fidelity solution onto reduced basis;
 \item \textbf{POD-G}: The solution of the reduced-order model.
 \end{enumerate}
+
 The one-dimensional case are designed with an artificial solution with a zero-value boundary condition, intended for testing the prediction accuracy of the three networks and also study the influence of several factors. Their prediction accuracy are further discussed the two realistic flow problems, where geometry parameters and common boundary conditions (Dirichlet and Neumann) are included.
 
 To assess the online accuracy of these methods, the following metrics are defined in the sense of mean squared error.
@@ -556,7 +569,7 @@ To assess the online accuracy of these methods, the following metrics are define
 =\frac{1}{N_{{\cal D}_{te}}}
 \sum\limits_{\pmb\mu ,\pmb{\phi}_h  \in {{\cal D}_{te}}}{
 \frac{\left\| \pmb{\phi}_h - \tilde{\phi} -\mathbf{V}\mathbf{V}^T \left( \pmb{\phi}_h - \tilde{\phi} \right)  \right\|}
-{\left\| \pmb{\phi}_h - - \tilde{\phi} \right\|}
+{\left\| \pmb{\phi}_h  - \tilde{\phi} \right\|}
 }
 \end{equation}
 
@@ -572,11 +585,9 @@ To assess the online accuracy of these methods, the following metrics are define
 \end{equation}
 
 \end{enumerate}
-where ${{\cal D}_{te}}=\{\pmb{\mu}_i, \pmb{\phi}_h(\pmb{\mu}_i)\}_{i=1}^{N_{{\cal D}_{te}}}$ is the test data set, the subscript "$\bullet$" is used to take the place of "POD-G","PDNN","PINN" and "PRNN". Thus ,$\pmb{\alpha}_{\bullet}\left( \pmb{\mu}\right)$ is the solution calculated from the corresponding method.
+where ${{\cal D}_{te}}=\{\pmb{\mu}_i, \pmb{\phi}_h(\pmb{\mu}_i)\}_{i=1}^{N_{{\cal D}_{te}}}$ is the test data set of size ${{\cal D}_{te}}$, the subscript "$\bullet$" is used to take the place of "POD-G","PDNN","PINN" and "PRNN". Thus, $\pmb{\alpha}_{\bullet}\left( \pmb{\mu}\right)$ is the solution calculated from the corresponding method.
 
-Note that Projection, POD-G, PDNN, PINN and PRNN are all coded in Python. The networks built are are all under the framework of Pytorch. The training of networks are all  implemented on two GUPs (NVIDIA Quadro GP100) of a server class station. To solve the reduced-order model directly for POD-G, the solver "linalg.solve" in  Numpy library is employed. We refer the reader to the repository \footnote{available at \url{https://github.com/cwq2016/POD-PINN}} for further details of the code method. For more information of the code, we refe For different data set as discussed above, we employ the specific sampling methods in parameter space: for building the RB, we adopt the Sobol sequences, a quasi-random low-discrepancy sequences; For choosing residual points, we use the Latin hypercube sampling; For generating test data set, we employ uniformly tensor-product grid.
-
-To train the netwroks
+Note that the Projection, POD-G, PDNN, PINN and PRNN methods are all coded in Python. The networks built are are all under the framework of Pytorch. The training of networks are all  implemented on two GUPs (NVIDIA Quadro GP100) of a server class station. To solve the reduced-order model directly for POD-G, the nonlinear solver "linalg.solve" in  Numpy library is employed. We refer the reader to the repository \footnote{available at \url{https://github.com/cwq2016/POD-PINN}} for further details of the code method. For different data set as discussed above, we employ the specific sampling methods in parameter space: for building the RB, we adopt the Sobol sequences, a quasi-random low-discrepancy sequences; For choosing residual points, we use the Latin hypercube sampling; For generating test data set, we employ uniformly tensor-product grid.
 
 
 \subsection{Burgers' equation}
@@ -588,21 +599,60 @@ In this subsection, to validate the proposed methods, we consider the one-dimens
 	 &\phi\left ( x= \pm1; \pmb {\mu} \right ) = 0
 \end{aligned}\right.
 \end{equation}
-where $\pmb{\mu} =(\mu_1, \mu_2) \in [1,10] \times [1,10]$ and $s(x;\pmb{\mu})$ it the source term defined so that the exact solution is
+where $\pmb{\mu} =(\mu_1, \mu_2) \in [1,10] \times [1,10]$ and $s(x;\pmb{\mu})$ is the source term defined so that the exact solution satisfies
 \begin{equation}
 	\phi(x; \pmb{\mu}) = (1+\mu_1 x)\sin(-\mu_2 x/3) (x^2-1) .
 \end{equation}
-The solution at the two end points are simply set zero to avoid the influence of boundary conditions. The problem is solved with Chebyshev pseudospectral(PS) method with $N_p+1$=128+1 Chebyshev Gauss-Lobatto points.
+For each parameter, the solution at the two end points are simply set zero to avoid the influence of boundary conditions. The problem is solved with Chebyshev pseudospectral(PS) method with $N_p+1$=128+1 Chebyshev Gauss-Lobatto points.
 
 
-We are are interested in the prediction accuracy of   Projection, POD-G, PDNN, PINN and PRNN methods. The accuracy of Projection and POD-G is only determined by two factors, namely the sample size for building RB and and the number of chosen modes, given that the nonlinear solver for POD-G is accurate enough. Here we term the two factors as essential factors.
-Besides the two factors, neural network like PDNN, PINN and PRNN are also determined by network architecture, the number of residual points, and so on. To study the influence of these factors, we resort to the control variates method. Some base values are set for these factor, namely sample size is $N_s=80$, the number of chosen modes is picked from the set $\{2,3,...,9\}$,  network architecture is $L=3$ and $n_H=20$, the number of residual points $N_{Resi}=5000$. To test the prediction accuracy, a test data set of size $101 \times 101=10201$ is generated on a tensor-product parameter grid $\{1+ 0.09i\}_{i=0}^{i=100} \times \{1+ 0.09i\}_{i=0}^{i=100}$. The dense test grid will grantee the reliability of the prediction accuracy.
+We are are interested in the prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods. The accuracy of Projection and POD-G is only determined by two factors, namely the sample size $N_s$ for building RB and and the number of chosen modes $m$, provided that the nonlinear solver for POD-G is accurate enough. Here we term the two factors as essential factors.
+Besides the two factors, neural network like PDNN, PINN and PRNN are also determined by network architecture, the number of residual points, and so on. To study the influence of these factors, we resort to the control variates method. Some base values are set for these factor, namely sample size is $N_s=80$, the number of chosen modes is picked from the set $\{2,3,...,9\}$,  network architecture is $L=3$ and $n_H=20$, the number of residual points is $N_{Resi}=5000$. To test the prediction accuracy, a test data set of size $101 \times 101=10201$ is generated on a tensor-product parameter grid $\{1+ 0.09i\}_{i=0}^{i=100} \times \{1+ 0.09i\}_{i=0}^{i=100}$. The dense test grid will grantee the reliability of the prediction accuracy.
 
-We first study the influence of the sample size. Fig. ??, presents the singular value distribution for the sample number $N_s=80$. It is shown that the singular value decays quickly, implying that  a small number of RB modes is enough for representing the dynamic of the problem. Meanwhile, the sample number can also be largely reduced. Thus, for comparison, $N_{s}=10$ and 320 random parameter samples are independently generated with Sobol sequences. The five methods are applied to the problem after the RB are built for $N_{s}=10$, 80 and 320, respectively. The prediction accuracy is shown in Fig. ??. It is shown that the Projection enjoys a better accuracy compared with the POD-G, but their discrepancy is very small. The pojection/POD-G improves just a little for sample number $N_s$ increasing from 10 to 80, and almost stagnates from $N_s=80$ to 320. Thus, sample number $N_s=10$ is enough for capture the main dynamic of the problem. The networks perform quite differently. The accuracy of PDNN is far lower than that of PINN and PRNN. Even with the increase of sample number, the accuracy of PDNN can improve by one order of magnitude, but the error curves fluctuate intensively especially for larger $m$. On the contrary, both PINN and PRNN perform much better, they almost keep pace with POD-G for smaller $m$. As $M \ge 6$, the PINN performs a little better than the PRNN, but their error level both come to a flat and cannot further drop down. The reason for the flat level is that both PINN and PRNN can only reduce their loss function down to a level of $10^{-6}$ for this problem rather zero or machine zero level. Thus the high-index modes are neglected by the networks.  The PINN performs a little better than the PRNN, it is opponent with our inference in Section \ref{PRNN}. The reason is two-fold: first, the problem and the target function is relatively easy for networks; second, the accuracy of POD-G is very close to projection. Therefore, There is no priority for the PRNN, as its loss function is a hybrid.
+We first study the influence of the sample size. Fig. \ref{fig_1DBurgesSingularValues_80}, presents the singular value distribution for the sample number $N_s=80$. It is shown that the singular value decays quickly, implying that  a small number of RB modes is enough for representing the dynamic of the problem. Meanwhile, the sample number can also be largely reduced. Thus, for comparison, $N_{s}=10$ and 320 random parameter samples are independently generated with Sobol sequences. The five methods are applied to the problem after the RB are built for $N_{s}=10$, 80 and 320, respectively. The prediction accuracy is shown in Fig. \ref{fig_1DBurgesErrorComparsion_SampleNum}. It is shown that the Projection enjoys a better accuracy compared with the POD-G, but their discrepancy is very small. The pojection/POD-G improves just a little for sample number $N_s$ increasing from 10 to 80, and almost stagnates from $N_s=80$ to 320. Thus, sample number $N_s=10$ is enough for capture the main dynamic of the problem. The networks perform quite differently. The accuracy of PDNN is far lower than that of PINN and PRNN. Even with the increase of sample number, the accuracy of PDNN can improve by one order of magnitude, but the error curves fluctuate intensively especially for larger $m$. On the contrary, both PINN and PRNN perform much better, they almost keep pace with POD-G for smaller $m$. As $m \ge 6$, the PINN performs a little better than the PRNN, but their error level both come to a saturation and cannot further drop down. The reason for the saturation is that both the PINN and PRNN can only reduce their loss function down to a level of $10^{-6}$ for this problem rather than zero or machine zero level. Thus the high-index modes of little importance are neglected by the networks.  The PINN performs a little better than the PRNN, which is opponent with our inference in Section \ref{PRNN}. The reason is two-fold: first, the problem and the target function is relatively easy for networks; second, the accuracy of POD-G is very close to projection. Therefore, There is no priority for the PRNN, as its loss function is a hybrid.
 
-To further study the influence of network architecture on the prediction accuracy of networks, we change the network width to $n_H=10$ and $n_H=30$,respectively, while keeping the network depth $L=3$ fixed. The results are shown in Fig. ??. It is shown that the PDNN can not gain an improvement of accuracy with the increase of $n_H$, or even get rid of the fluctuation, resulting from the overfitting trap. On the contrary, the PINN and PRNN show a much better tendency. Their prediction accuracy increases with $n_H$ but tends to saturate for a larger $n_H$. This is in accordance with the situation that the approximation capability of the network increases and gradually saturate with network size.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
+\caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
+\label{fig_1DBurgesSingularValues_80}
+\end{figure}
 
-As there is unlimited residual points for training PINN and PRNN, we are interested in how the number of residual points influence the prediction accuracy. Apart from $N_{Resi}=5000$, the numbers of residual points $N_{Resi}=1250$, $2500$ and $10000$ are considered, and their results are shown in Fig. ??. The influence of the numbers of residual points is similar with that of network architecture.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf}
+\caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods for the number of snapshots $N_s=10$, 80 and 320, respectively.}
+\label{fig_1DBurgesErrorComparsion_SampleNum}
+\end{figure}
+
+
+To further study the influence of network architecture on the prediction accuracy of the three networks, we change network width to $n_H=10$ and $n_H=30$,respectively, while keeping network depth $L=3$ fixed. The results are shown in Fig. \ref{fig_1DBurgesErrorComparsion_Netsize}. It is shown that the PDNN can not gain an improvement of accuracy with the increase of $n_H$, or even get rid of the fluctuation, resulting from the overfitting trap. On the contrary, the PINN and PRNN show a much better tendency. Their prediction accuracy increases with $n_H$ but tends to saturate for a larger $n_H$. This is in accordance with the situation that the approximation capability of the network increases and gradually saturate with network size.
+
+As there are unlimited residual points available  for training PINN and PRNN, we are interested in how the number of residual points influence the prediction accuracy. In addition to $N_{Resi}=5000$, the numbers of residual points $N_{Resi}=1250$, $2500$ and $10000$ are considered, and their results are shown in Fig. \ref{fig_1DBurgesErrorComparsion_NResi}. The influence of the numbers of residual points is similar with that of network architecture.
+
+The further confirmation of the reliability of PRNN is shown in Fig. \ref{fig_1DBurgesResultComparsion}, offering a good agreement between the Chebyshev pseudospectral method and PRNN for some specific parameters.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf}
+\caption{The prediction accuracy of the Projection, POD-G, PDNN, PINN and PRNN methods. The network width is set $n_H=10$, 20 and 30, respectively.}
+\label{fig_1DBurgesErrorComparsion_Netsize}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf}
+\caption{The prediction accuracy of the Projection, POD-G, PINN and PRNN methods. $N_{Resi}=1250$, 2500, 5000, 10000 residual points are chosen for training the PINN and PRNN.}
+\label{fig_1DBurgesErrorComparsion_NResi}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=12cm]{../../pythonNN/1DBurges/fig/ResultComparsion.pdf}
+\caption{The comparison between the Chebyshev pseudospectral (PS) and the PRNN solutions for four specific parameters. The results of the PRNN are obtained via employing the $m=9$ modes a network of $L=3$ and $n_H=20$ architecture trained with 5000 residual points.}
+\label{fig_1DBurgesResultComparsion}
+\end{figure}
+
 
 \subsection{Lid-driven cavity}
 The lid-driven cavity flow is considered for testing the prediction accuracy of the methods in handling realistic problem.
@@ -683,7 +733,7 @@ Thus, the flow is governed by the following two-dimensional incompressible Navie
 \end{aligned}
 \label{eq_GoverningEqsNaturalConvection}
 \end{equation}
-where $\mathbf{u}=(u,v)$ is the dimensionless velocity in Cartesian coordinate $\mathbf{x}=(x,y)$, $p$ is the pressure, $\nabla$ is the  Hamiltonian operator, $Ra$ is the Rayleigh number, $Pr$ is the Prandtl number, $\mathbf{n}_g=\left(\sin(\theta),\cos(\theta) \right)$ is the unit vertical vector. All the sides are no-slip walls. The heated and cooled sides are enforced with the dimensionless temperature $T=0.5$ and $T=-0.5$, respectively. The other two sides are enforced with adiabatic boundary condition $\parital T / \parital y=0$.
+where $\mathbf{u}=(u,v)$ is the dimensionless velocity in Cartesian coordinate $\mathbf{x}=(x,y)$, $p$ is the pressure, $\nabla$ is the  Hamiltonian operator, $Ra$ is the Rayleigh number, $Pr$ is the Prandtl number, $\mathbf{n}_g=\left(\sin(\theta),\cos(\theta) \right)$ is the unit vertical vector. All the sides are no-slip walls. The heated and cooled sides are enforced with the dimensionless temperature $T=0.5$ and $T=-0.5$, respectively. The other two sides are enforced with adiabatic boundary condition $\partial T / \partial y=0$.
 Similarly, the flow is solved with the Chebyshev pseudospectral method accompanied with $IP_{N}-IP_{N-2}$ scheme on a grid of $49 \times 49$.
 
 The parameter space of interest is $\pmb{\mu}=(Ra, Pr, \theta) \in [10^4, 10^5] \times [0.6, 0.8] \times[\pi/4, \pi/2]$. 200 snapshots of high-fidelity solutions for parameters generated Sobol sequence are calculated and collected for building the reduced basis, and the corresponding singular value distribution is plotted in Fig. ??. It is shown that the singular value decays slowly, implying that more modes are required to represent the underlying dynamic. We choose $m=5, 10, 15,...,30$ modes to test the prediction accuracy of PDNN, PINN and PRNN.
