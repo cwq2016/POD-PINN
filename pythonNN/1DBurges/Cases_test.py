@@ -15,7 +15,7 @@ from NN import train, DEVICE, train_options_default
 import numpy as np
 
 #
-EPOCH   = int(1E4)
+EPOCH   = int(2E4)
 train_options_default['lamda'] = lambda epoch: 0.96**(epoch//200)
 NumSolsdir = 'NumSols'
 resultsdir = 'results'
