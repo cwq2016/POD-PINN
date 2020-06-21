@@ -101,9 +101,18 @@ def VisuError(Error, testcases, Savetofile=False):
     symbols = ('^','o', 's','D','p','H',)
     lines   = ('-', '--',':', '-.','.',)
     #plt.close('all')i
-    newfig(width=1.3)
+    if name == 'SampleNum':
+        tmp = '$N_s$'
+        width = 1.3
+    elif name =='NetSize':
+        tmp = '$n_H$'
+        width = 1
+    elif name == 'NResi':
+        tmp = '$N_{Resi}$'
+        width = 1
+    newfig(width=width)
     for i in range(len(Vals)):
-        namestr = ', ' + '$N_s$=' + str(Vals[i])
+        namestr = ', ' + tmp+'=' + str(Vals[i])
         if name != 'SampleNum' and i ==0:
             plt.semilogy(M_Vec,Error[i,:,4], 'k-.',label='Projection'  )
             plt.semilogy(M_Vec,Error[i,:,0], 'r-.',label='POD-G      '  )

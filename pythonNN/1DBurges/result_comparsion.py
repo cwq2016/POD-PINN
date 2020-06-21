@@ -40,7 +40,7 @@ symbols = ('^','o', 's','D','p','H',)
 lines   = ('-', '--',':', '-.','.',)
 colors  = ('r','g','b','g','y',)
 plt.close('all')
-newfig(width=1.1)
+newfig(width=1)
 for k in range(2):
     for i in range(alpha.shape[0]):
         alphai    = alpha[i:i+1,:]
@@ -51,7 +51,7 @@ for k in range(2):
         #plot
         name = '$\\boldsymbol{\\mu}=(%0.1f,%0.1f)$'%(alphai[0,0],alphai[0,1])
         if k == 0:
-            plt.plot(roeqs.xgrid, phi_Exact.T, colors[i]+lines[0]  ,label='Exact'           ,markersize=6  )
+            plt.plot(roeqs.xgrid, phi_Exact.T, colors[i]+lines[0]  ,label='PS'           ,markersize=6  )
         else:
             plt.plot(roeqs.xgrid, phi_proj.T , colors[i]+symbols[i],label='PRNN, '+name,markersize=6  )
 
