@@ -85,9 +85,9 @@ for i in range(len(ValidationInd )):
     
 #colorbar 左 下 宽 高 
 l = 0.93
-b = 0.2
+b = 0.1
 w = 0.015
-h = 0.6
+h = 0.8
 #对应 l,b,w,h；设置colorbar位置；
 rect = [l,b,w,h] 
 cbar_ax = fig.add_axes(rect) 
