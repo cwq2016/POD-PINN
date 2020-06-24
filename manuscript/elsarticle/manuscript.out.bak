@@ -4,7 +4,7 @@
 \BOOKMARK [3][-]{subsubsection.2.1.1}{Chebyshev pseudospectral method}{subsection.2.1}% 4
 \BOOKMARK [2][-]{subsection.2.2}{Reduced-order model}{section.2}% 5
 \BOOKMARK [3][-]{subsubsection.2.2.1}{POD reduced basis}{subsection.2.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Further reduction in online cost}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Further reduction in the cost of reduced-order model}{subsection.2.2}% 7
 \BOOKMARK [1][-]{section.3}{Physics-informed machine learning of reduced-order model}{}% 8
 \BOOKMARK [2][-]{subsection.3.1}{Artificial neural network \(ANN\) }{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.2}{Customized networks}{section.3}% 10
