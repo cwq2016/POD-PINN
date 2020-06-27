@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.11.16)  27 JUN 2020 21:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.11.16)  27 JUN 2020 21:58
 entering extended mode
 **C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/elsarticle/manuscript.tex
 (C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/elsarticle/manuscript.tex
@@ -966,33 +966,33 @@ Package pdftex.def Info: ../fig/RelationshipChart.pdf used on input line 449.
 (pdftex.def)             Requested size: 341.43306pt x 331.03749pt.
  [7] [8 <C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/fig/RelationshipChart.p
 df>] [9] [10] [11]
-<../../pythonNN/1DBurges/fig/SingularValues_80.pdf, id=324, 364.91293pt x 346.7
-7069pt>
+<../../pythonNN/1DBurges/fig/SingularValues_80.pdf, id=324, 304.42293pt x 286.6
+7094pt>
 File: ../../pythonNN/1DBurges/fig/SingularValues_80.pdf Graphic file (type pdf)
 
  <use ../../pythonNN/1DBurges/fig/SingularValues_80.pdf>
 Package pdftex.def Info: ../../pythonNN/1DBurges/fig/SingularValues_80.pdf used
  on input line 643.
-(pdftex.def)             Requested size: 199.16928pt x 189.26936pt.
+(pdftex.def)             Requested size: 199.16928pt x 187.5543pt.
 
-<../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf, id=325, 360.66289pt x 3
-46.77069pt>
+<../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf, id=325, 300.1729pt x 28
+6.67094pt>
 File: ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf Graphic file (type 
 pdf)
  <use ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf>
 Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf 
 used on input line 647.
-(pdftex.def)             Requested size: 199.16928pt x 191.497pt.
+(pdftex.def)             Requested size: 199.16928pt x 190.20947pt.
 
-<../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf, id=326, 360.662
-89pt x 346.77069pt>
+<../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf, id=326, 300.172
+9pt x 286.67094pt>
 File: ../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf Graphic fil
 e (type pdf)
 
 <use ../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf>
 Package pdftex.def Info: ../../pythonNN/2DNaturalConvection/fig/SingularValues_
 200.pdf used on input line 652.
-(pdftex.def)             Requested size: 199.16928pt x 191.497pt.
+(pdftex.def)             Requested size: 199.16928pt x 190.20947pt.
  [12]
 <../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf, id=337, 451.39787pt
  x 436.92029pt>
@@ -1145,7 +1145,7 @@ TeX/fonts/type1/public/cm-super/sfrm1440.pfb><C:/CTEX/MiKTeX/fonts/type1/public
 ><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sfti0900.pfb><C:/CTEX/MiKTeX/fonts
 /type1/public/cm-super/sfti1000.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super
 /sftt0800.pfb>
-Output written on manuscript.pdf (24 pages, 2052869 bytes).
+Output written on manuscript.pdf (24 pages, 2053013 bytes).
 PDF statistics:
  872 PDF objects out of 1000 (max. 8388607)
  153 named destinations out of 1000 (max. 500000)

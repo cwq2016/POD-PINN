@@ -637,20 +637,20 @@ Besides the two factors, neural network like PDNN, PINN and PRNN are also determ
 We first study the influence of the sample size. Fig. \ref{fig_1DBurgesSingularValues_80}, presents the singular value distribution for the sample number $N_s=80$. It is shown that the singular value decays quickly, implying that  a small number of RB modes is enough for representing the dynamic of the problem. Meanwhile, the sample number can also be largely reduced. Thus, for comparison, $N_{s}=10$ and 320 random parameter samples are independently generated with Sobol sequences, and also their corresponding snapshots are calculated. The five methods are applied to the problem after the RB are built for $N_{s}=10$, 80 and 320, respectively. The prediction accuracy is shown in Fig. \ref{fig_1DBurgesErrorComparsion_SampleNum}. It is shown that the Projection enjoys a better accuracy compared with the POD-G, but their discrepancy is very small. The pojection/POD-G improves just a little for sample number $N_s$ increasing from 10 to 80, and almost stagnates from $N_s=80$ to 320. Thus, sample number $N_s=10$ is enough for capture the main dynamic of the problem. The networks perform quite differently. The accuracy of PDNN is far lower than that of PINN and PRNN. Even with the increase of sample number, the accuracy of PDNN can improve by one order of magnitude, but the error curves fluctuate intensively especially for larger $m$. On the contrary, both PINN and PRNN perform much better, they almost keep pace with POD-G for smaller $m$. As $m \ge 6$, the PINN performs a little better than the PRNN, but their error level both come to a saturation and cannot further drop down. The reason for the saturation is that both the PINN and PRNN can only reduce their loss function down to a level of $10^{-6}$ for this problem rather than zero or machine zero level. Thus the high-index modes of little importance are neglected by the networks.  The PINN performs a little better than the PRNN, which is opponent with our inference in Section \ref{PRNN}. The reason is two-fold: first, the problem and the target function is relatively easy for networks; second, the accuracy of POD-G is very close to projection. Therefore, There is no priority for the PRNN, as its loss function is a hybrid.
 \begin{figure}[!ht]
     \centering
-    \subfigure[pic1.]{
+    \subfigure{
         \includegraphics[width=7cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
         \label{fig_1DBurgesSingularValues_80}
     }
-    \subfigure[pic2.]{
+    \subfigure{
         \includegraphics[width=7cm]{../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf}
         \label{fig_2DLidDrivenSingularValues}
     }
     
-    \subfigure[pic3.]{
+    \subfigure{
         \includegraphics[width=7cm]{../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf}
         \label{fig_2DNaturalConvectionSingularValues}
     }
-\caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
+\caption{Singular value distribution for (a) 1D Burges' equation with 80 snapshots, (b) 2D lid -driven flow with 100 snapshots and (c) 2D Natural convection with 200 snapshots}
 \end{figure}
 
 
