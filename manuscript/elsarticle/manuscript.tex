@@ -635,13 +635,31 @@ We are interested in the prediction accuracy of the Projection, POD-G, PDNN, PIN
 Besides the two factors, neural network like PDNN, PINN and PRNN are also determined by network architecture, the number of residual points, and so on. To study the influence of these factors, we resort to the control variates method. Some base values are set for these factor, namely sample size is $N_s=80$, the number of chosen modes is picked from the set $\{2,3,...,9\}$,  network architecture is $L=3$ and $n_H=20$, the number of residual points is $N_{Resi}=5000$. To test the prediction accuracy, a test data set of size $101 \times 101=10201$ is generated on a tensor-product parameter grid $\{1+ 0.09i\}_{i=0}^{i=100} \times \{1+ 0.09i\}_{i=0}^{i=100}$. The dense test grid will guarantee the reliability of the prediction accuracy. As for the training of networks, we use the same following hyperparameters: 20000 epoches, 10 batches with each batch of size $N_{Resi}/10$, leaning rate initialized as 0.01 and decaying by 96\% every 200 epoches.
 
 We first study the influence of the sample size. Fig. \ref{fig_1DBurgesSingularValues_80}, presents the singular value distribution for the sample number $N_s=80$. It is shown that the singular value decays quickly, implying that  a small number of RB modes is enough for representing the dynamic of the problem. Meanwhile, the sample number can also be largely reduced. Thus, for comparison, $N_{s}=10$ and 320 random parameter samples are independently generated with Sobol sequences, and also their corresponding snapshots are calculated. The five methods are applied to the problem after the RB are built for $N_{s}=10$, 80 and 320, respectively. The prediction accuracy is shown in Fig. \ref{fig_1DBurgesErrorComparsion_SampleNum}. It is shown that the Projection enjoys a better accuracy compared with the POD-G, but their discrepancy is very small. The pojection/POD-G improves just a little for sample number $N_s$ increasing from 10 to 80, and almost stagnates from $N_s=80$ to 320. Thus, sample number $N_s=10$ is enough for capture the main dynamic of the problem. The networks perform quite differently. The accuracy of PDNN is far lower than that of PINN and PRNN. Even with the increase of sample number, the accuracy of PDNN can improve by one order of magnitude, but the error curves fluctuate intensively especially for larger $m$. On the contrary, both PINN and PRNN perform much better, they almost keep pace with POD-G for smaller $m$. As $m \ge 6$, the PINN performs a little better than the PRNN, but their error level both come to a saturation and cannot further drop down. The reason for the saturation is that both the PINN and PRNN can only reduce their loss function down to a level of $10^{-6}$ for this problem rather than zero or machine zero level. Thus the high-index modes of little importance are neglected by the networks.  The PINN performs a little better than the PRNN, which is opponent with our inference in Section \ref{PRNN}. The reason is two-fold: first, the problem and the target function is relatively easy for networks; second, the accuracy of POD-G is very close to projection. Therefore, There is no priority for the PRNN, as its loss function is a hybrid.
-
 \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
+    \centering
+    \subfigure[pic1.]{
+        \includegraphics[width=7cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
+        \label{fig_1DBurgesSingularValues_80}
+    }
+    \subfigure[pic2.]{
+        \includegraphics[width=7cm]{../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf}
+        \label{fig_2DLidDrivenSingularValues}
+    }
+    
+    \subfigure[pic3.]{
+        \includegraphics[width=7cm]{../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf}
+        \label{fig_2DNaturalConvectionSingularValues}
+    }
 \caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
-\label{fig_1DBurgesSingularValues_80}
 \end{figure}
+
+
+%\begin{figure}[!ht]
+%  \centering
+%  \includegraphics[width=9cm]{../../pythonNN/1DBurges/fig/SingularValues_80.pdf}
+%\caption{Singular value distribution of 80 snapshots for 1D Burges' equation}
+%\label{fig_1DBurgesSingularValues_80}
+%\end{figure}
 
 \begin{figure}[!ht]
   \centering
@@ -771,12 +789,12 @@ All in all, it can be concluded that the PRNN is much better tan the PINN and PD
 \label{eq_Streamfunction}
 \end{equation}
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=9cm]{../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf}
-\caption{Singular value distribution of 100 snapshots for 2D lid-driven flow}
-\label{fig_2DLidDrivenSingularValues}
-\end{figure}
+%\begin{figure}[!ht]
+%  \centering
+%  \includegraphics[width=9cm]{../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf}
+%\caption{Singular value distribution of 100 snapshots for 2D lid-driven flow}
+%\label{fig_2DLidDrivenSingularValues}
+%\end{figure}
 
 \begin{figure}[!ht]
   \centering
@@ -817,12 +835,12 @@ For comparison, we pick the first 30, 100 snapshots from the 200 snapshots to do
 
 The prediction accuracy is shown in Fig. \ref{fig_2DNaturalConvectionErrorComparsion_SampleNum}. The tendency of PDNN, PINN and PRNN is similar with that in Fig. \ref{fig_2DLidDrivenErrorComparsion_SampleNum}. Both the PINN and PRNN are much better than the PDNN.  Both the PINN and PRNN can achieve a higher accuracy with 30 snapshots than the PDNN even with 200 snapshots. Besides, the PRNN is the best choice, as it not only enjoys a high accuracy, but also shows an improvement with the increase of the snapshots. The further confirmation of the reliability of PRNN is shown in Fig. \ref{fig_2DNaturalConvectionResultComparsion}, offering a good agreement between the Chebyshev pseudospectral method and PRNN for some specific parameters. Also, the displayed streamlines are derived from solving Eq. \ref{eq_Streamfunction}.
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=9cm]{../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf}
-\caption{Singular value distribution of 200 snapshots for 2D natural convection }
-\label{fig_2DNaturalConvectionSingularValues}
-\end{figure}
+%\begin{figure}[!ht]
+%  \centering
+%  \includegraphics[width=9cm]{../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf}
+%\caption{Singular value distribution of 200 snapshots for 2D natural convection }
+%\label{fig_2DNaturalConvectionSingularValues}
+%\end{figure}
 
 \begin{figure}[!ht]
   \centering
@@ -837,8 +855,6 @@ The prediction accuracy is shown in Fig. \ref{fig_2DNaturalConvectionErrorCompar
 \caption{The comparison of temperature contour and streamlines of 2D natural convection between the Chebyshev pseudospectral (PS) and the PRNN solutions for four specific parameters. The results of the PRNN are obtained via employing the $m$=25 modes extracted from 100 snapshots and a network of $L$=5 and $n_H$=30 architecture trained with 20000 residual points. The solid streamline indicates an anticlockwise vortex, the dashed streamline an clockwise vortex.}
 \label{fig_2DNaturalConvectionResultComparsion}
 \end{figure}
-
-Service du contr?le des habitants
 
 \FloatBarrier
 \section{Conclusions}

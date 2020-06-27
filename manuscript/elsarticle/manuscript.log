@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.11.16)  27 JUN 2020 21:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2019.11.16)  27 JUN 2020 21:54
 entering extended mode
 **C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/elsarticle/manuscript.tex
 (C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/elsarticle/manuscript.tex
@@ -965,146 +965,144 @@ File: ../fig/RelationshipChart.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../fig/RelationshipChart.pdf used on input line 449.
 (pdftex.def)             Requested size: 341.43306pt x 331.03749pt.
  [7] [8 <C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/fig/RelationshipChart.p
-df>] [9] [10] [11] [12]
-<../../pythonNN/1DBurges/fig/SingularValues_80.pdf, id=334, 364.91293pt x 346.7
+df>] [9] [10] [11]
+<../../pythonNN/1DBurges/fig/SingularValues_80.pdf, id=324, 364.91293pt x 346.7
 7069pt>
 File: ../../pythonNN/1DBurges/fig/SingularValues_80.pdf Graphic file (type pdf)
 
  <use ../../pythonNN/1DBurges/fig/SingularValues_80.pdf>
 Package pdftex.def Info: ../../pythonNN/1DBurges/fig/SingularValues_80.pdf used
- on input line 641.
-(pdftex.def)             Requested size: 256.0748pt x 243.34631pt.
+ on input line 643.
+(pdftex.def)             Requested size: 199.16928pt x 189.26936pt.
 
-<../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf, id=335, 451.39787pt
- x 436.92029pt>
-File: ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf Graphic file (t
-ype pdf)
-
-<use ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf>
-Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.
-pdf used on input line 648.
-(pdftex.def)             Requested size: 341.43306pt x 330.49615pt.
- [13 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/SingularValues_
-80.pdf>]
-<../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf, id=369, 360.66289pt x
- 346.77069pt>
-File: ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf Graphic file (typ
-e pdf)
- <use ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf>
-Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pd
-f used on input line 662.
-(pdftex.def)             Requested size: 256.0748pt x 246.2142pt.
-
-<../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf, id=370, 360.66289pt x 3
-46.77069pt>
-File: ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf Graphic file (type 
-pdf)
- <use ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf>
-Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf 
-used on input line 669.
-(pdftex.def)             Requested size: 256.0748pt x 246.2142pt.
-
-<../../pythonNN/1DBurges/fig/ResultComparsion.pdf, id=371, 343.92667pt x 348.23
-389pt>
-File: ../../pythonNN/1DBurges/fig/ResultComparsion.pdf Graphic file (type pdf)
- <use ../../pythonNN/1DBurges/fig/ResultComparsion.pdf>
-Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ResultComparsion.pdf used 
-on input line 676.
-(pdftex.def)             Requested size: 256.0748pt x 259.29375pt.
- [14 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ErrorComparsion
-_SampleNum.pdf>]
-[15 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ErrorComparsion_
-Netsize.pdf> <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ErrorCo
-mparsion_NResi.pdf>] <..//fig/geometry.pdf, id=495, 594.9999pt x 259.97125pt>
-File: ..//fig/geometry.pdf Graphic file (type pdf)
-
-<use ..//fig/geometry.pdf>
-Package pdftex.def Info: ..//fig/geometry.pdf used on input line 740.
-(pdftex.def)             Requested size: 284.52756pt x 124.32065pt.
- [16 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ResultComparsio
-n.pdf>]
-<../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf, id=549, 360.66289pt x 3
+<../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf, id=325, 360.66289pt x 3
 46.77069pt>
 File: ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf Graphic file (type 
 pdf)
  <use ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf>
 Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/SingularValues_100.pdf 
-used on input line 776.
-(pdftex.def)             Requested size: 256.0748pt x 246.2142pt.
+used on input line 647.
+(pdftex.def)             Requested size: 199.16928pt x 191.497pt.
 
-[17 <C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/fig/geometry.pdf>]
-<../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf, id=561, 481.6428
-5pt x 467.48906pt>
-File: ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf Graphic file
- (type pdf)
-
-<use ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf>
-Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleN
-um.pdf used on input line 783.
-(pdftex.def)             Requested size: 341.43306pt x 331.40596pt.
-
-<../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf, id=562, 697.0077pt x 441.
-2811pt>
-File: ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf Graphic file (type pd
-f)
- <use ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf>
-Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf us
-ed on input line 790.
-(pdftex.def)             Requested size: 398.33858pt x 252.1927pt.
- [18 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDriven/fig/SingularValu
-es_100.pdf>]
-<../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf, id=589, 360.662
+<../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf, id=326, 360.662
 89pt x 346.77069pt>
 File: ../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf Graphic fil
 e (type pdf)
 
 <use ../../pythonNN/2DNaturalConvection/fig/SingularValues_200.pdf>
 Package pdftex.def Info: ../../pythonNN/2DNaturalConvection/fig/SingularValues_
-200.pdf used on input line 822.
+200.pdf used on input line 652.
+(pdftex.def)             Requested size: 199.16928pt x 191.497pt.
+ [12]
+<../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf, id=337, 451.39787pt
+ x 436.92029pt>
+File: ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf Graphic file (t
+ype pdf)
+
+<use ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.pdf>
+Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_SampleNum.
+pdf used on input line 666.
+(pdftex.def)             Requested size: 341.43306pt x 330.49615pt.
+
+<../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf, id=341, 360.66289pt x
+ 346.77069pt>
+File: ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf Graphic file (typ
+e pdf)
+ <use ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pdf>
+Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_Netsize.pd
+f used on input line 680.
 (pdftex.def)             Requested size: 256.0748pt x 246.2142pt.
 
-<../../pythonNN/2DNaturalConvection/fig/ErrorComparsion_SampleNum.pdf, id=590, 
+<../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf, id=342, 360.66289pt x 3
+46.77069pt>
+File: ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf Graphic file (type 
+pdf)
+ <use ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf>
+Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ErrorComparsion_NResi.pdf 
+used on input line 687.
+(pdftex.def)             Requested size: 256.0748pt x 246.2142pt.
+
+<../../pythonNN/1DBurges/fig/ResultComparsion.pdf, id=343, 343.92667pt x 348.23
+389pt>
+File: ../../pythonNN/1DBurges/fig/ResultComparsion.pdf Graphic file (type pdf)
+ <use ../../pythonNN/1DBurges/fig/ResultComparsion.pdf>
+Package pdftex.def Info: ../../pythonNN/1DBurges/fig/ResultComparsion.pdf used 
+on input line 694.
+(pdftex.def)             Requested size: 256.0748pt x 259.29375pt.
+ [13]
+<..//fig/geometry.pdf, id=359, 594.9999pt x 259.97125pt>
+File: ..//fig/geometry.pdf Graphic file (type pdf)
+
+<use ..//fig/geometry.pdf>
+Package pdftex.def Info: ..//fig/geometry.pdf used on input line 758.
+(pdftex.def)             Requested size: 284.52756pt x 124.32065pt.
+ [14 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/SingularValues_
+80.pdf> <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDriven/fig/SingularV
+alues_100.pdf> <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DNaturalConvectio
+n/fig/SingularValues_200.pdf>] [15 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonN
+N/1DBurges/fig/ErrorComparsion_SampleNum.pdf>]
+[16 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ErrorComparsion_
+Netsize.pdf> <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges/fig/ErrorCo
+mparsion_NResi.pdf>] [17 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/1DBurges
+/fig/ResultComparsion.pdf> <C:/Users/56425/Desktop/cwq/POD-PINN/manuscript/fig/
+geometry.pdf>]
+<../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf, id=589, 481.6428
+5pt x 467.48906pt>
+File: ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf Graphic file
+ (type pdf)
+
+<use ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleNum.pdf>
+Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/ErrorComparsion_SampleN
+um.pdf used on input line 801.
+(pdftex.def)             Requested size: 341.43306pt x 331.40596pt.
+
+<../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf, id=590, 697.0077pt x 441.
+2811pt>
+File: ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf Graphic file (type pd
+f)
+ <use ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf>
+Package pdftex.def Info: ../../pythonNN/2DLidDriven/fig/ResultComparsion.pdf us
+ed on input line 808.
+(pdftex.def)             Requested size: 398.33858pt x 252.1927pt.
+ [18 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDriven/fig/ErrorCompars
+ion_SampleNum.pdf>] [19 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDriv
+en/fig/ResultComparsion.pdf>]
+<../../pythonNN/2DNaturalConvection/fig/ErrorComparsion_SampleNum.pdf, id=661, 
 451.39787pt x 436.92029pt>
 File: ../../pythonNN/2DNaturalConvection/fig/ErrorComparsion_SampleNum.pdf Grap
 hic file (type pdf)
 
 <use ../../pythonNN/2DNaturalConvection/fig/ErrorComparsion_SampleNum.pdf>
 Package pdftex.def Info: ../../pythonNN/2DNaturalConvection/fig/ErrorComparsion
-_SampleNum.pdf used on input line 829.
+_SampleNum.pdf used on input line 847.
 (pdftex.def)             Requested size: 341.43306pt x 330.49615pt.
 
-<../../pythonNN/2DNaturalConvection/fig/ResultComparsion.pdf, id=591, 691.13278
+<../../pythonNN/2DNaturalConvection/fig/ResultComparsion.pdf, id=662, 691.13278
 pt x 441.2811pt>
 File: ../../pythonNN/2DNaturalConvection/fig/ResultComparsion.pdf Graphic file 
 (type pdf)
 
 <use ../../pythonNN/2DNaturalConvection/fig/ResultComparsion.pdf>
 Package pdftex.def Info: ../../pythonNN/2DNaturalConvection/fig/ResultComparsio
-n.pdf used on input line 836.
+n.pdf used on input line 854.
 (pdftex.def)             Requested size: 455.24408pt x 290.66734pt.
 
-Overfull \hbox (25.23946pt too wide) in paragraph at lines 836--837
+Overfull \hbox (25.23946pt too wide) in paragraph at lines 854--855
  [][] 
  []
 
-[19 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDriven/fig/ErrorComparsi
-on_SampleNum.pdf>] [20 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DLidDrive
-n/fig/ResultComparsion.pdf>] [21 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/
-2DNaturalConvection/fig/SingularValues_200.pdf>] [22 <C:/Users/56425/Desktop/cw
-q/POD-PINN/pythonNN/2DNaturalConvection/fig/ErrorComparsion_SampleNum.pdf>]
-[23 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DNaturalConvection/fig/Resul
-tComparsion.pdf>]
+[20 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2DNaturalConvection/fig/Error
+Comparsion_SampleNum.pdf>] [21 <C:/Users/56425/Desktop/cwq/POD-PINN/pythonNN/2D
+NaturalConvection/fig/ResultComparsion.pdf>]
 (C:\Users\56425\Desktop\cwq\POD-PINN\manuscript\elsarticle\manuscript.bbl
-[24
-
-] [25])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 862.
- [26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 862.
+[22] [23])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 878.
+ [24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 878.
 
 (C:\Users\56425\Desktop\cwq\POD-PINN\manuscript\elsarticle\manuscript.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 862.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 862.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 878.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 878.
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: 3DFE1260AAC84D10CE7C4DC4EF41C97D;1418.
 
@@ -1113,13 +1111,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18787 strings out of 495354
- 311616 string characters out of 3183858
- 527384 words of memory out of 3000000
- 21206 multiletter control sequences out of 15000+200000
- 29214 words of font info for 149 fonts, out of 3000000 for 9000
+ 18788 strings out of 495354
+ 311708 string characters out of 3183858
+ 527349 words of memory out of 3000000
+ 21210 multiletter control sequences out of 15000+200000
+ 29095 words of font info for 148 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,16n,55p,2321b,526s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,16n,55p,2321b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MiKTeX/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/CTEX/MiKTeX/font
 s/type1/public/amsfonts/cm/cmbx10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/C
@@ -1147,9 +1145,9 @@ TeX/fonts/type1/public/cm-super/sfrm1440.pfb><C:/CTEX/MiKTeX/fonts/type1/public
 ><C:/CTEX/MiKTeX/fonts/type1/public/cm-super/sfti0900.pfb><C:/CTEX/MiKTeX/fonts
 /type1/public/cm-super/sfti1000.pfb><C:/CTEX/MiKTeX/fonts/type1/public/cm-super
 /sftt0800.pfb>
-Output written on manuscript.pdf (26 pages, 2053988 bytes).
+Output written on manuscript.pdf (24 pages, 2052869 bytes).
 PDF statistics:
- 883 PDF objects out of 1000 (max. 8388607)
- 154 named destinations out of 1000 (max. 500000)
+ 872 PDF objects out of 1000 (max. 8388607)
+ 153 named destinations out of 1000 (max. 500000)
  27358 words of extra memory for PDF output out of 29859 (max. 10000000)
 
