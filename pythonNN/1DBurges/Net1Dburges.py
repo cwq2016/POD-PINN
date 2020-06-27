@@ -228,7 +228,7 @@ if __name__ == '__main__':
         
     from plotting import newfig,savefig
     import matplotlib.pyplot as plt    
-    newfig(width=1)
+    newfig(width=0.8)
     plt.semilogy(np.arange(roeqs.sigma.shape[0])+1, roeqs.sigma,'-ko')
     plt.xlabel('$m$')
     plt.ylabel('Singular value')    
