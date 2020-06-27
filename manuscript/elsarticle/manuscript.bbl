@@ -24,7 +24,7 @@ Y.~Maday, Reduced basis method for the rapid and reliable solution of partial
 
 \bibitem{liang2002proper}
 Y.~Liang, H.~Lee, S.~Lim, W.~Lin, K.~Lee, C.~Wu, Proper orthogonal
-  decomposition and its applications—part i: Theory, Journal of Sound and
+  decomposition and its applications-part i: Theory, Journal of Sound and
   vibration 252~(3) (2002) 527--544.
 
 \bibitem{chinesta2011short}
@@ -173,6 +173,14 @@ P.~Astrid, S.~Weiland, K.~Willcox, T.~Backx, Missing point estimation in models
 \bibitem{ramachandran2017searching}
 P.~Ramachandran, B.~Zoph, Q.~V. Le, Searching for activation functions, arXiv
   preprint arXiv:1710.05941.
+
+\bibitem{ioffe2015batch}
+S.~Ioffe, C.~Szegedy, Batch normalization: Accelerating deep network training
+  by reducing internal covariate shift, arXiv preprint arXiv:1502.03167.
+
+\bibitem{kingma2014adam}
+D.~P. Kingma, J.~Ba, Adam: A method for stochastic optimization, arXiv preprint
+  arXiv:1412.6980.
 
 \bibitem{shen1991hopf}
 J.~Shen, Hopf bifurcation of the unsteady regularized driven cavity flow,

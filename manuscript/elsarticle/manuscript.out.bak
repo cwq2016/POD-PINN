@@ -11,8 +11,8 @@
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Projection-driven neural network\(PDNN\)}{subsection.3.2}% 11
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Physics-informed neural network\(PINN\)}{subsection.3.2}% 12
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Physics-reinforced neural network\(PRNN\)}{subsection.3.2}% 13
-\BOOKMARK [1][-]{section.4}{Numerical results}{}% 14
+\BOOKMARK [1][-]{section.4}{Numerical results and discussion}{}% 14
 \BOOKMARK [2][-]{subsection.4.1}{Burgers' equation}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Lid-driven cavity}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Lid-driven flow}{section.4}% 16
 \BOOKMARK [2][-]{subsection.4.3}{Natural convection in enclosure}{section.4}% 17
 \BOOKMARK [1][-]{section.5}{Conclusions}{}% 18
