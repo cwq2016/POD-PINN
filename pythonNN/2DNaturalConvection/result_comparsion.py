@@ -20,6 +20,7 @@ import torch
 fielddir = 'fields_proj'
 ValidationFalg     = 'Validation'
 ValidationInd      = [0, 130,215]
+Theta_Frac         = [[1,4], [9,20], [1,2]]
 casedict = {'SampleNum':200,\
             'NetSize':30,\
             'NResi':20000,\
@@ -82,6 +83,10 @@ for i in range(len(ValidationInd )):
     psilevels = np.concatenate((np.linspace(psi_min, 0, 10),np.linspace(0,psi_max, 3)[1:], ))
     
     title = '$\\boldsymbol{\\mu}=(%0.1E,%0.2f,%d)$'%(alphai[0,0], alphai[0,1],alphai[0,2])
+    if Theta_Frac[i][0]!=1:
+        title = '$\\boldsymbol{\\mu}=(%0.1E,%0.2f,{%d}\pi/{%d})$'%(alphai[0,0],alphai[0,1], Theta_Frac[i][0],Theta_Frac[i][1])
+    else:
+        title = '$\\boldsymbol{\\mu}=(%0.1E,%0.2f,    \pi/{%d})$'%(alphai[0,0],alphai[0,1], Theta_Frac[i][1])
     sc1,sc2 = contourplot(plt.subplot(gs[0, i]), x, y, T,   Tmin, Tmax,  psi   , psilevels,title+', PRNN')
     sc1,sc2 = contourplot(plt.subplot(gs[1, i]), x, y, TNum,Tmin, Tmax,  psiNum, psilevels,title+', PS')
     

@@ -153,9 +153,7 @@ class Net1DAdvDiff(POD_Net):
         self.ub = torch.tensor(roeqs.design_space[1:2,:]).float().to(DEVICE)
         self.roeqs = roeqs
 
-        
-        
-        
+
     def u_net(self,x):
         x = (x-(self.ub+self.lb)/2)/(self.ub-self.lb)*2
         out = self.unet(x)

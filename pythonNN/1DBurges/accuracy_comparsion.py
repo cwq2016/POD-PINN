@@ -124,12 +124,22 @@ def VisuError(Error, testcases, Savetofile=False):
         plt.semilogy(M_Vec,Error[i,:,2], 'g--'+symbols[i]     ,label='PINN'+namestr  )
         plt.semilogy(M_Vec,Error[i,:,3], 'g-'+symbols[i]      ,label='PRNN'+namestr  )
 
+
+    if name == 'NResi':
+        plt.ylim(bottom=9E-5)
+    elif name == 'NetSize':
+        plt.ylim(bottom=7E-5)
     plt.xlabel('$m$')
     plt.ylabel(r'Error $\varepsilon$')
     #plt.title(name)
     plt.legend(loc="lower left", ncol=1, handlelength=3)
+    
+    if name == 'NResi':
+        plt.legend(loc="best", ncol=1, handlelength=3)
+        
     plt.show()
     
+
     if Savetofile:
         savefig("fig/ErrorComparsion_"+name)
 
