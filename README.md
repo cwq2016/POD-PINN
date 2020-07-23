@@ -22,7 +22,7 @@ and both are more accurate than a purely data-driven neural network (refered to 
 the reduced basis refinement, before reaching its accuracy limit, the PRNN obtains higher accuracy
 than the direct reduced-order model based on a Galerkin projection.
 
-A schematic of these methods is dipicted in the Follwing.
+The relationship of these methods is dipicted in the follwing.
 
 <p align="center">
   <img src="https://github.com/cwq2016/POD-PINN/blob/master/IMG/RelationshipChart.jpg">
