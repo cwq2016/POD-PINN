@@ -24,7 +24,9 @@ than the direct reduced-order model based on a Galerkin projection.
 
 A schematic of these methods is dipicted in the Follwing.
 
-![image](https://github.com/cwq2016/POD-PINN/tree/master/IMG/RelationshipChart.jpg)
+<p align="center">
+  <img src="https://github.com/cwq2016/POD-PINN/blob/master/IMG/RelationshipChart.jpg">
+</p>
 
 # Code instruction
 The code is written in Python, build neural network based on PyTorch framework. The codes tries to implement the PDNN, PINN and PRNN for three test cases:
