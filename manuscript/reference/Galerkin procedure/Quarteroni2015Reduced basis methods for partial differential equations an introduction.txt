@@ -1,7 +1,0 @@
-@book{quarteroni2015reduced,
-  title={Reduced basis methods for partial differential equations: an introduction},
-  author={Quarteroni, Alfio and Manzoni, Andrea and Negri, Federico},
-  volume={92},
-  year={2015},
-  publisher={Springer}
-}
