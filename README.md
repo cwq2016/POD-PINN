@@ -23,9 +23,8 @@ the reduced basis refinement, before reaching its accuracy limit, the PRNN obtai
 than the direct reduced-order model based on a Galerkin projection.
 
 A schematic of these methods is dipicted in the Follwing.
-<p align="center">
-  <img src="https://github.com/cwq2016/POD-PINN/tree/master/IMG/RelationshipChart.jpg">
-</p>
+
+![image](https://github.com/cwq2016/POD-PINN/tree/master/IMG/RelationshipChart.jpg)
 
 # Code instruction
 The code is written in Python, build neural network based on PyTorch framework. The codes tries to implement the PDNN, PINN and PRNN for three test cases:
