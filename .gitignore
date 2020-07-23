@@ -1,5 +1,7 @@
 # flow field file
 *POD/
+manuscript/
+pythonNN/1DAdvDiff/
 *Validation/
 others/
 *.tar.gz
