@@ -18,7 +18,7 @@ nonlinear problems, the projection of high-fidelity solution onto the reduced sp
 than the solution of the reduced-order equation. Therefore, higher accuracy than the PINN for this
 network - referred to as physics-reinforced neural network (PRNN) - can be expected for complex
 nonlinear problems. Numerical results demonstrate that the PRNN is more accurate than the PINN
-and both are more accurate than a purely data-driven neural network (refered to PDNN) for complex problems. During
+and both are more accurate than a purely data-driven neural network (referred to PDNN) for complex problems. During
 the reduced basis refinement, before reaching its accuracy limit, the PRNN obtains higher accuracy
 than the direct reduced-order model based on a Galerkin projection.
 
