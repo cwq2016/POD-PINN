@@ -25,7 +25,7 @@ than the direct reduced-order model based on a Galerkin projection.
 The relationship of these methods is dipicted in the follwing.
 
 <p align="center">
-  <img src="https://github.com/cwq2016/POD-PINN/blob/master/IMG/RelationshipChart.jpg">
+  <img src="https://github.com/cwq2016/POD-PINN/blob/master/IMG/RelationshipChart.jpg" height="500px">
 </p>
 
 # Code instruction
