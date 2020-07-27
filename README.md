@@ -36,7 +36,7 @@ The code is written in Python, and the feedforward neural networks are built bas
 
 The high-fidelity solver(Chebyshev pseudospectral solver) is out of the scope of this code. In each test case, the high-fidelity solutions are precomputed with HF solver and stored in the "Numsols" under the folder for each case. The user can use his/her own HF solver instead. But the reduced-order model built in "Net*.py"(* denote case name), should be revised accordingly.
 
-The code can run both on CPU and single GPU. The user can run "Cases_test.py" to do test serially, or utilize the "batch.sh" for parallel test. After training the neural networks, the "accuracy_comparsion.py" to gain an view of the error of different networks.
+The code can run both on CPU and single GPU. The user can run "Cases_test.py" to do test serially, or utilize the "batch.sh" for parallel test. After training the neural networks, the "accuracy_comparsion.py" can be run to gain an view of the error of different networks.
 
 # Reference
 This is a scientific project. If you use POD-PINN for publications or presentations in science, please support the project by citing our publications given in references. In case you have question regarding POD-PINN, don't hesitate to contact us wenqianchen2016@gmail.com.
