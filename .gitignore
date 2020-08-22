@@ -3,6 +3,7 @@
 manuscript/
 pythonNN/1DAdvDiff/
 *Validation/
+.DS_Store
 others/
 *.tar.gz
 NSsolver/

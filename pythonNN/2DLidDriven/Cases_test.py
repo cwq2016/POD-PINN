@@ -122,9 +122,10 @@ def GetLabelData(roeqs):
     labeled_outputs= roeqs.projections.T 
     return (labeled_inputs, labeled_outputs, 'Label',0.9,)
 # Residual points
+from pyDOE import lhs       
 def GetResiData(roeqs,Np):
     Nin = roeqs.design_space.shape[1]
-    Resi_inputs  = Normalization.Anti_Mapminmax(np.random.rand(Np, Nin)*2-1,  roeqs.design_space)
+    Resi_inputs  = Normalization.Anti_Mapminmax(lhs(Nin,Np)*2-1,  roeqs.design_space)
     dummy = np.zeros((Np,roeqs.M))
     return (Resi_inputs, dummy, 'Resi',0.9,)
 # Residual points
